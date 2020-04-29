@@ -39,6 +39,10 @@ namespace Optional.Tests
             CollectionAssert.AreEqual(list2.Values().ToList(), list2Expected);
             CollectionAssert.AreEqual(list3.Values().ToList(), list3Expected);
             CollectionAssert.AreEqual(list4.Values().ToList(), list4Expected);
+
+            string Concat(string x, string y) => x + y;
+            Assert.AreEqual(list1.Aggregate((a, b) => a.Combine(b, Concat)).ValueOr("--"), "abc");
+
         }
 
         [TestMethod]
